@@ -11,10 +11,10 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-10 text-center sm:p-16"
+        className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-10 text-center sm:p-16"
       >
-        <p className="font-mono text-sm font-medium uppercase tracking-widest text-[var(--color-accent)]">05. Contact</p>
-        <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl">
+        <p className="font-serif text-lg italic text-[var(--color-accent)]">05. Contact</p>
+        <h2 className="mt-3 font-serif text-3xl tracking-tight text-[var(--color-text)] sm:text-4xl">
           Let's build something reliable.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[var(--color-text-dim)]">

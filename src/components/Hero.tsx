@@ -22,11 +22,11 @@ export function Hero() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="min-w-0 order-2 md:order-1"
         >
-          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-[var(--color-text)] sm:text-6xl">
+          <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-[var(--color-text)] sm:text-6xl">
             Sara Chaudhari
           </h1>
 
-          <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-display text-2xl font-medium text-[var(--color-accent)] sm:text-3xl">
+          <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-serif text-2xl italic text-[var(--color-accent-dim)] sm:text-3xl">
             <span>I build</span>
             <span className="relative inline-grid">
               <span className="invisible whitespace-nowrap">
@@ -77,11 +77,11 @@ export function Hero() {
           className="order-1 md:order-2"
         >
           <div className="relative mx-auto max-w-sm md:ml-auto md:mr-0">
-            <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full border-2 border-[var(--color-accent)]" />
+            <div className="absolute -inset-3 -z-10 rotate-2 rounded-2xl bg-[var(--color-surface)]" />
             <img
               src={profile.heroPhoto}
               alt="Sara Chaudhari at her UC San Diego graduation"
-              className="aspect-[4/5] w-full border border-[var(--color-border)] object-cover object-top"
+              className="aspect-[4/5] w-full rounded-2xl border border-[var(--color-border)] object-cover object-top shadow-sm"
             />
           </div>
         </motion.div>

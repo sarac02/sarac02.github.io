@@ -36,7 +36,7 @@ function TiltCard({ photo, onOpen }: { photo: GalleryPhoto; onOpen: () => void }
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformPerspective: 800 }}
-      className="group relative aspect-[4/5] overflow-hidden rounded-md border border-[var(--color-border)] shadow-sm"
+      className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-[var(--color-border)] shadow-sm"
       whileHover={{ scale: 1.03 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
@@ -48,7 +48,7 @@ function TiltCard({ photo, onOpen }: { photo: GalleryPhoto; onOpen: () => void }
         loading="lazy"
       />
       <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-        <span className="p-3 font-display text-sm font-medium text-white">{photo.caption}</span>
+        <span className="p-3 font-serif text-sm italic text-white">{photo.caption}</span>
       </div>
     </motion.button>
   )
@@ -77,11 +77,11 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
           >
             <motion.div
               layoutId={`gallery-${openPhoto.src}`}
-              className="relative max-h-[85vh] max-w-lg overflow-hidden rounded-md"
+              className="relative max-h-[85vh] max-w-lg overflow-hidden rounded-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <img src={openPhoto.src} alt={openPhoto.alt} className="max-h-[85vh] w-full object-contain" />
-              <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 font-display text-lg font-medium text-white">
+              <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 font-serif text-lg italic text-white">
                 {openPhoto.caption}
               </p>
             </motion.div>

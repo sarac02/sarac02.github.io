@@ -39,8 +39,8 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
       </div>
 
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5 sm:px-8">
-        <a href="#home" className="font-display text-xl font-bold text-[var(--color-text)]">
-          Sara <span className="text-[var(--color-accent)]">C.</span>
+        <a href="#home" className="font-serif text-xl font-semibold text-[var(--color-text)]">
+          Sara <span className="italic text-[var(--color-accent)]">C.</span>
         </a>
 
         <ul className="hidden items-center gap-8 text-[15px] text-[var(--color-text-dim)] md:flex">
