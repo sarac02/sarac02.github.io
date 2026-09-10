@@ -1,6 +1,6 @@
 # sarac02.github.io
 
-Personal portfolio site — built with React, TypeScript, Vite, Tailwind CSS v4, and Framer Motion.
+Personal portfolio site. Built with React, TypeScript, Vite, Tailwind CSS v4, and Framer Motion.
 
 **Live:** https://sarac02.github.io
 
@@ -21,7 +21,7 @@ npm run preview # preview the production build locally
 ## Content
 
 All copy (experience, projects, skills, education, publications) lives in one place:
-[`src/data/content.ts`](src/data/content.ts). Edit that file to update the site — no need to touch components.
+[`src/data/content.ts`](src/data/content.ts). Edit that file to update the site; no need to touch components.
 
 The downloadable resume lives at [`public/resume.pdf`](public/resume.pdf).
 

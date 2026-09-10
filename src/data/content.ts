@@ -1,13 +1,15 @@
 export const profile = {
   name: 'Sara Chaudhari',
-  role: 'Software Engineer — Backend Systems & ML Infrastructure',
+  role: 'Software Engineer, Backend Systems & ML Infrastructure',
   location: 'San Diego, CA',
   email: 's2chaudhari@ucsd.edu',
   github: 'https://github.com/sarac02',
   linkedin: 'https://www.linkedin.com/in/sara-chaudhari/',
   resume: '/resume.pdf',
+  headshot: '/images/headshot.jpg',
+  graduation: '/images/graduation.jpg',
   blurb:
-    "I build backend systems and ML infrastructure — distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. Currently finishing my MS at UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
+    "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. Currently finishing my MS at UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
 }
 
 export type Role = {
@@ -24,7 +26,7 @@ export const experience: Role[] = [
     title: 'Software Engineer Intern',
     period: 'Sept 2025 – Dec 2025',
     bullets: [
-      'Built Python backend orchestration services for distributed AI workflows — request queuing, connection pooling, and failure isolation to keep service reliability up under production load.',
+      'Built Python backend orchestration services for distributed AI workflows: request queuing, connection pooling, and failure isolation to keep service reliability up under production load.',
       'Cut redundant compute and lifted shared-service capacity by 28% with Redis-backed response caching and batched async processing under concurrent production traffic.',
       'Designed shared configuration and retry utilities adopted across multiple backend services, standardizing failure handling platform-wide.',
     ],
@@ -99,113 +101,100 @@ export const research: Research[] = [
 
 export type Project = {
   name: string
-  period?: string
+  tagline: string
   description: string
   bullets: string[]
   tech: string[]
   github?: string
-  privateNote?: string
   featured?: boolean
 }
 
 export const projects: Project[] = [
   {
-    name: 'LLM Avalon Simulator',
+    name: 'WorkoutSync',
+    tagline: 'Real-time state sync across three unsynchronized clocks',
     description:
-      'A multi-agent simulation of the social deduction game The Resistance: Avalon, where each player is an LLM-driven agent with a hidden role, its own reasoning policy, and a planning/accusation loop.',
+      'A from-scratch clone of the Apple Fitness+ live-overlay experience: workout data captured on Apple Watch, streamed to iPhone and mirrored to Apple TV, with heart rate, calories, and activity rings overlaid on video in real time on all three screens at once.',
     bullets: [
-      'Modeled each role (Merlin, Percival, Assassin, etc.) as an independent agent with role-specific prompts and decision logic.',
-      'Built a structured game loop handling team proposals, voting, missions, and end-game assassination, with a dedicated planning-and-accusation logging layer for debugging agent behavior.',
+      'Built on pure Swift and C++ with no dependency on Apple’s higher-level frameworks: HealthKit capture on-watch, WatchConnectivity to iPhone, MultipeerConnectivity relaying to Apple TV, each leg running its own clock.',
+      'Wrote a plausibility filter that rejects physically impossible sensor readings before they reach the UI, and an interpolation layer that keeps the three-device overlay smooth despite independent, drifting clocks.',
+      'Tested on real builds, not simulators only: caught a watchOS API that silently no-ops, a missing framework link, and a data race that would have crashed playback under load.',
+    ],
+    tech: ['Swift', 'C++', 'HealthKit', 'Real-Time Systems'],
+    github: 'https://github.com/sarac02/WorkoutSync',
+    featured: true,
+  },
+  {
+    name: 'LLM Avalon Simulator',
+    tagline: 'Multi-agent deception and hidden-role reasoning',
+    description:
+      'A full simulation of the social-deduction game The Resistance: Avalon, played entirely by LLM agents. Each agent holds a hidden role, reasons privately about who to trust, and has to bluff, accuse, or stay quiet without ever seeing another agent’s internal state.',
+    bullets: [
+      'Modeled every role (Merlin, Percival, Assassin, and the rest) as an independent agent with role-specific knowledge, incentives, and prompting.',
+      'Built the full game loop: team proposals, voting, missions, and end-game assassination, with a dedicated planning-and-accusation logging layer to trace exactly why an agent voted or accused the way it did.',
     ],
     tech: ['Python', 'LLM Orchestration', 'Multi-Agent Systems'],
     github: 'https://github.com/sarac02/llm-avalon-simulator',
     featured: true,
   },
   {
-    name: 'Multi-PDF RAG Chatbot',
+    name: 'Hybrid LSTM-VAE-GAN Anomaly Detector',
+    tagline: 'Adversarial training for time-series anomaly detection',
     description:
-      'A retrieval-augmented chatbot that answers natural-language questions across multiple PDF documents at once, including numeric lookups like revenue or profit figures.',
+      'A hybrid deep-learning architecture that fuses a sequence-aware variational autoencoder with an adversarial discriminator, so the model learns what "normal" looks like and flags deviations instead of relying on hand-tuned thresholds.',
     bullets: [
-      'Built a document pipeline with PyPDF2 and pdf2image for parsing, chunking, and embedding, backed by a Chroma vector store for similarity search.',
-      'Used LangChain to orchestrate retrieval and Hugging Face Transformers for generation, supporting multi-document question answering in one conversation.',
-    ],
-    tech: ['LangChain', 'Chroma', 'Hugging Face', 'Python'],
-    github: 'https://github.com/sarac02/chatwithPDFs',
-    featured: true,
-  },
-  {
-    name: 'Hybrid LSTM-VAE-GAN for Time-Series Anomaly Detection',
-    description:
-      'A hybrid deep-learning architecture combining an LSTM-based VAE with an adversarial discriminator to flag anomalies in time-series data — the modeling approach behind the anomaly-detection pipeline built at Garg Group.',
-    bullets: [
-      'Combined a sequence-aware VAE encoder-decoder with a GAN discriminator so the model learns to reconstruct normal temporal patterns and flag deviations.',
-      'Applied to multivariate time-series data as a research complement to the rule-based anomaly detection used in production.',
+      'Combined an LSTM-based VAE encoder-decoder with a GAN discriminator: the VAE reconstructs normal temporal patterns, the discriminator sharpens what counts as a convincing reconstruction.',
+      'Built as a research upgrade to the rule-based anomaly detection used in production for supply-chain time-series monitoring.',
     ],
     tech: ['PyTorch', 'LSTM', 'VAE', 'GAN'],
     github: 'https://github.com/sarac02/Hybrid-LSTM-VAE-GAN-for-Time-Series-Anomaly-Detection',
     featured: true,
   },
   {
-    name: 'Real-Time Analytics Dashboard',
+    name: 'Multi-PDF RAG Chatbot',
+    tagline: 'Retrieval-augmented Q&A across documents at once',
     description:
-      'An internal-tool-style admin dashboard for business operations, with authentication, role-based access, company management, and a Kanban-based task board.',
+      'A retrieval-augmented chatbot that answers natural-language questions across multiple PDFs in a single conversation, including numeric lookups like revenue or profit figures buried inside tables.',
     bullets: [
-      'Built with Refine on React and TypeScript, using GraphQL for data fetching and Ant Design for the component layer.',
-      'Companion to the Transaction Analytics Dashboard built with React and Spring Boot, focused on real-time visualization of live system and transaction metrics.',
+      'Built the document pipeline with PyPDF2 and pdf2image for parsing and chunking, backed by a Chroma vector store for similarity search over embeddings.',
+      'Used LangChain to orchestrate retrieval and Hugging Face Transformers for generation, so a single query can pull context from several source documents at once.',
     ],
-    tech: ['React', 'TypeScript', 'GraphQL', 'Ant Design'],
-    github: 'https://github.com/sarac02/Real-time-Dashboard-with-React',
+    tech: ['LangChain', 'Chroma', 'Hugging Face', 'Python'],
+    github: 'https://github.com/sarac02/chatwithPDFs',
     featured: true,
   },
   {
-    name: 'Distributed Log Search Engine',
-    period: 'Jan 2025 – Mar 2025',
+    name: 'Genome Sequence & Drug-Target Interaction Analysis',
+    tagline: 'Published research: deep learning on viral genomic data',
     description:
-      'A distributed system for indexing and searching large-scale logs in parallel, built to explore sharding, replication, and fault tolerance under concurrent load.',
+      'A computational biology project analyzing SARS-CoV-2 genomic sequences and alignment data, the work that became a peer-reviewed paper on drug-target interaction prediction with deep learning (see Publications).',
     bullets: [
-      'Used Java multithreading and a MapReduce-style split to index and query logs in parallel across simulated nodes.',
-      'Deployed on AWS EC2 and S3 with Jenkins-based CI/CD, reaching sub-5-second search latency on 50GB+ of data via sharding and replication.',
-    ],
-    tech: ['Java', 'MapReduce', 'AWS EC2', 'Jenkins'],
-    privateNote: 'Source private — details on request',
-  },
-  {
-    name: 'Genome Sequence & Drug–Target Interaction Analysis',
-    description:
-      'A computational biology project analyzing SARS-CoV-2 genomic sequences and alignment data, later published as a peer-reviewed paper on drug–target interaction prediction with deep learning.',
-    bullets: [
-      'Applied PCA and k-means clustering to genomic and alignment datasets, and trained linear regression and neural network models to predict alignment bit scores.',
-      'Findings extended into a published paper on genome sequence analysis and drug–target interaction prediction (see Publications).',
+      'Applied PCA and k-means clustering to genomic and alignment datasets to surface structure in high-dimensional sequence data.',
+      'Trained linear regression and neural network models to predict alignment bit scores from sequence features.',
     ],
     tech: ['Python', 'scikit-learn', 'PCA', 'Neural Networks'],
     github: 'https://github.com/sarac02/Advanced-AI-for-Drug-discovery',
-  },
-  {
-    name: 'WorkoutSync',
-    description:
-      'A portfolio systems project mimicking Apple Fitness+: live workout data streamed from Apple Watch to iPhone and Apple TV, with synchronized video overlays of heart rate, calories, and activity rings across all three devices.',
-    bullets: [
-      'Built on pure Swift and C++ with no reliance on Apple’s higher-level frameworks — HealthKit capture on-watch, WatchConnectivity to iPhone, MultipeerConnectivity to Apple TV, each with independent clock synchronization.',
-      'Added a plausibility filter to reject physically impossible sensor readings and interpolation logic to keep overlays smooth across three unsynchronized clocks.',
-    ],
-    tech: ['Swift', 'C++', 'Real-Time Systems', 'HealthKit'],
-    github: 'https://github.com/sarac02/WorkoutSync',
   },
 ]
 
 export type Publication = {
   title: string
   venue: string
+  link?: string
+  type: 'paper' | 'poster'
 }
 
 export const publications: Publication[] = [
   {
-    title: 'Genome Sequence Analysis and Drug–Target Interaction Prediction using Deep Learning',
+    title: 'Genome Sequence Analysis and Drug-Target Interaction Prediction using Deep Learning',
     venue: 'Springer Innovative Computing and Communications, LNNS Series (Vol. 1038)',
+    link: 'https://link.springer.com/chapter/10.1007/978-981-97-4149-6_39',
+    type: 'paper',
   },
   {
     title: 'Two-Pass Pipeline for Automated Medical Infographic Generation Using Text Summarization',
-    venue: 'SmartDataCom: International Conference on Smart Data Processing, Communication and Networking (2024)',
+    venue: 'Poster presentation, SmartDataCom: International Conference on Smart Data Processing, Communication and Networking (2024)',
+    type: 'poster',
   },
 ]
 
@@ -234,7 +223,7 @@ export const education = [
     school: 'University of California, San Diego',
     degree: 'MS, Computer Science and Engineering',
     period: 'Sept 2024 – Jun 2026',
-    detail: 'GPA 3.9/4.0 · Distributed Systems, Operating Systems, Advanced Algorithms, Computer Networks, ML Systems',
+    detail: 'GPA 3.9/4.0',
   },
   {
     school: 'A.P. Shah Institute of Technology, University of Mumbai',

@@ -1,6 +1,6 @@
 import { GraduationCap } from 'lucide-react'
 import { Section } from './Section'
-import { education, skills } from '../data/content'
+import { education, skills, profile } from '../data/content'
 
 export function About() {
   return (
@@ -10,14 +10,13 @@ export function About() {
           <p className="leading-relaxed text-[var(--color-text-dim)]">
             I'm a Master's student in Computer Science and Engineering at UC San Diego, focused on{' '}
             <span className="text-[var(--color-text)]">distributed systems, backend infrastructure, and the
-            operational side of ML</span> — the services, pipelines, and tooling that keep models and APIs
-            reliable once they leave a notebook. My coursework spans distributed systems, operating systems,
-            advanced algorithms, computer networks, and ML systems, and it shows up directly in how I approach
-            production code: think about failure modes first, then optimize.
+            operational side of ML</span>: the services, pipelines, and tooling that keep models and APIs
+            reliable once they leave a notebook. My approach to production code is to think about failure
+            modes first, then optimize.
           </p>
           <p className="mt-4 leading-relaxed text-[var(--color-text-dim)]">
             Outside of backend work, I've done graduate research in causal inference and published two papers
-            in applied ML. I like projects that sit at the intersection of the two — systems that have to run
+            in applied ML. I like projects that sit at the intersection of the two: systems that have to run
             ML reliably, not just run it once.
           </p>
 
@@ -38,6 +37,18 @@ export function About() {
         </div>
 
         <div className="md:col-span-2">
+          <div className="mb-6 overflow-hidden rounded-lg border border-[var(--color-border)]">
+            <img
+              src={profile.graduation}
+              alt="Sara at her UC San Diego graduation"
+              className="aspect-[3/4] w-full object-cover object-top"
+              loading="lazy"
+            />
+            <p className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 font-mono text-xs text-[var(--color-text-faint)]">
+              UC San Diego, MS Class of 2026
+            </p>
+          </div>
+
           <p className="mb-4 font-mono text-xs uppercase tracking-wider text-[var(--color-text-faint)]">Toolbox</p>
           <div className="space-y-5">
             {skills.map((group) => (
