@@ -91,7 +91,7 @@ export function Hero() {
           <div className="relative mx-auto max-w-sm md:ml-auto md:mr-0">
             <div className="absolute -inset-3 -z-10 rotate-2 rounded-2xl bg-[var(--color-surface)]" />
             <img
-              src={profile.graduation}
+              src={profile.heroPhoto}
               alt="Sara Chaudhari at her UC San Diego graduation"
               className="aspect-[4/5] w-full rounded-2xl border border-[var(--color-border)] object-cover object-top shadow-sm"
             />

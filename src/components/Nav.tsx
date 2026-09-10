@@ -40,7 +40,7 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
 
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
         <a href="#home" className="font-mono text-sm font-bold text-[var(--color-text)]">
-          sara<span className="text-[var(--color-accent)]">.dev</span>
+          sara<span className="text-[var(--color-accent)]">c.</span>
         </a>
 
         <ul className="hidden items-center gap-8 font-mono text-sm text-[var(--color-text-dim)] md:flex">

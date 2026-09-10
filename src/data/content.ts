@@ -6,20 +6,27 @@ export const profile = {
   github: 'https://github.com/sarac02',
   linkedin: 'https://www.linkedin.com/in/sara-chaudhari/',
   resume: '/resume.pdf',
-  graduation: '/images/graduation.jpg',
-  travel: '/images/travel.jpg',
+  heroPhoto: '/images/graduation-portrait.jpg',
+  gallery: [
+    { src: '/images/bali.jpg', caption: 'Nusa Penida, Bali', alt: 'Sara at Broken Beach in Nusa Penida, Bali' },
+    { src: '/images/bigbear.jpg', caption: 'Big Bear Lake, CA', alt: 'Sara at sunset by Big Bear Lake' },
+    { src: '/images/la.jpg', caption: 'Griffith Observatory, LA', alt: 'Sara at Griffith Observatory with the Hollywood sign behind her' },
+    { src: '/images/golf.jpg', caption: 'Sorrento Valley Driving Range', alt: 'Sara mid-swing at a golf driving range' },
+  ],
   blurb:
     "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
   outsideOfWork:
     "Outside of work I'm most likely planning the next trip. I like finding a new place and just walking it, hiking it, or floating in the ocean off it, that broken-beach photo is from Nusa Penida, Indonesia. Closer to home you'll find me on a golf course losing balls or on a tennis court losing games with slightly better grace.",
   hobbies: ['Traveling', 'Hiking', 'Golf', 'Tennis', 'Beaches'],
+  experiencePhilosophy:
+    "I care less about the feature shipping and more about what happens the week after, when it's under real traffic and something inevitably goes sideways. Most of what I've actually gotten paid for is the unglamorous work of making sure that week goes fine.",
 }
 
 export type Role = {
   company: string
   title: string
   period: string
-  bullets: string[]
+  narrative: string
   tech: string[]
 }
 
@@ -28,44 +35,32 @@ export const experience: Role[] = [
     company: 'Genies',
     title: 'Software Engineer Intern',
     period: 'Sept 2025 – Dec 2025',
-    bullets: [
-      'Sat in front of a handful of AI response services that all called each other, and none of them handled a slow neighbor gracefully. Added queuing and connection pooling in Python so one laggy call stopped taking the rest down with it.',
-      'Noticed the same query kept hitting the model over and over during traffic spikes. Put Redis-backed caching in front of it, which took about a quarter of that redundant load off the system without touching response quality.',
-      'Tired of every team writing its own retry logic slightly differently, I built one shared retry-and-timeout utility. Three other backend teams adopted it instead of maintaining their own.',
-    ],
+    narrative:
+      "Genies had a handful of AI response services that all called each other, and none of them handled a slow neighbor gracefully, one laggy call and the rest backed up behind it. I spent most of my time on the unglamorous plumbing: request queuing and connection pooling so that stopped happening, Redis-backed caching that quietly took about a quarter of the redundant load off the system during peak traffic, and a shared retry-and-timeout utility that three other backend teams ended up adopting instead of writing their own version.",
     tech: ['Python', 'Redis', 'Async I/O', 'Distributed Systems'],
   },
   {
     company: 'Dassault Systèmes Americas Corp.',
     title: 'Software Engineer Intern',
     period: 'June 2025 – Sept 2025',
-    bullets: [
-      'One stuck workflow job was enough to jam up thousands of tasks waiting behind it. Rebuilt the state-transition and retry handling in Java so a single failure stayed contained instead of cascading.',
-      'A manual rule-processing step was the slowest part of the pipeline. Containerized it and moved it onto Kubernetes with parallel execution, which brought average batch time down by about 20%.',
-      'Regression bugs kept slipping into the workflow engine unnoticed. Wrote a Groovy test suite against Jenkins CI/CD that caught two recurring classes of state-transition bugs before they ever reached release.',
-    ],
+    narrative:
+      "At Dassault Systèmes I worked on the workflow engine behind enterprise product-lifecycle tooling, the kind of system where one stuck job could jam up thousands of tasks waiting behind it. I rebuilt the state-transition and retry handling in Java so a single failure stayed contained instead of cascading, moved a slow manual rule-processing step onto Kubernetes with parallel execution for roughly a 20% speedup, and wrote a Groovy test suite that caught two recurring classes of bugs before they ever reached release.",
     tech: ['Java', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins'],
   },
   {
     company: 'UpSolve Solutions',
     title: 'Software Engineer',
     period: 'Apr 2023 – Jul 2024',
-    bullets: [
-      'The existing scoring path was too slow for real-time use. Rewrote it as a C++ service on Linux that scores events against a pre-trained model inline, cutting median latency by roughly 30%.',
-      'Traffic came in bursts, not evenly, and the service would choke during spikes. Fronted it with Redis-backed queues in a producer-consumer setup so it stayed stable through 5,000+ requests a day at peak.',
-      'Model drift was only ever caught when someone noticed something looked off downstream. Added a daily job comparing live outputs to offline batch results, so drift shows up before anyone has to go looking for it.',
-    ],
+    narrative:
+      "UpSolve is where I first got to own a real-time system end to end. The existing scoring path was too slow for production use, so I rewrote it as a C++ service on Linux, which cut median latency by about 30%, and fronted it with Redis-backed queues so it stayed stable through bursts of 5,000+ requests a day instead of choking. I also built a quiet daily job comparing live model outputs to offline batch results, so drift showed up on its own instead of someone noticing something looked off three weeks later.",
     tech: ['C++', 'Linux', 'Redis', 'AWS SQS'],
   },
   {
     company: 'Garg Group',
     title: 'Software Engineer',
     period: 'Sept 2022 – Apr 2023',
-    bullets: [
-      'Supply-chain reporting relied on a lot of manual pulling and cleaning. Automated the ingestion and feature-generation pipeline end to end, cutting the manual overhead by about 40%.',
-      'Needed features out of raw time-series records fast enough to be useful. Ran rolling-window feature generation over 100K+ inventory records with Spark on EMR, which cut end-to-end latency by a third.',
-      'Anomaly alerts were rule-based and missed a lot. Wired the anomaly-scoring workflow through Airflow with a better model behind it, improving detection accuracy by 15% over the old rules and giving ops team automated alerts instead of manual checks.',
-    ],
+    narrative:
+      "My first real engineering job was at Garg Group, doing data engineering for a supply-chain team that was still pulling and cleaning everything by hand. I automated the ingestion and feature pipeline end to end, ran rolling-window feature generation over 100K+ inventory records with Spark, and rebuilt the anomaly-scoring workflow on Airflow with a real model behind it instead of static rules, between the automation and the better model, manual overhead dropped by about 40% and ops finally got alerts instead of a spreadsheet to babysit.",
     tech: ['Spark', 'AWS EMR', 'Airflow', 'Python'],
   },
 ]

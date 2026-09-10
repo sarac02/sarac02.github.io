@@ -1,6 +1,7 @@
 import { GraduationCap } from 'lucide-react'
 import { Section } from './Section'
 import { education, skills, profile } from '../data/content'
+import { PhotoGallery } from './PhotoGallery'
 
 export function About() {
   return (
@@ -58,30 +59,21 @@ export function About() {
         </div>
       </div>
 
-      <div className="mt-16 grid items-center gap-10 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-10 md:grid-cols-[1fr_1.2fr]">
-        <div className="overflow-hidden rounded-xl border border-[var(--color-border)]">
-          <img
-            src={profile.travel}
-            alt="Sara on a hike overlooking a beach in Nusa Penida, Indonesia"
-            className="aspect-[4/5] w-full object-cover"
-            loading="lazy"
-          />
+      <div className="mt-16 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-10">
+        <p className="font-serif text-2xl italic text-[var(--color-accent-dim)]">Outside of work</p>
+        <p className="mt-4 max-w-2xl leading-relaxed text-[var(--color-text-dim)]">{profile.outsideOfWork}</p>
+        <div className="mt-5 mb-8 flex flex-wrap gap-2">
+          {profile.hobbies.map((h) => (
+            <span
+              key={h}
+              className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 text-sm text-[var(--color-text-dim)]"
+            >
+              {h}
+            </span>
+          ))}
         </div>
 
-        <div>
-          <p className="font-serif text-2xl italic text-[var(--color-accent-dim)]">Outside of work</p>
-          <p className="mt-4 leading-relaxed text-[var(--color-text-dim)]">{profile.outsideOfWork}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {profile.hobbies.map((h) => (
-              <span
-                key={h}
-                className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 text-sm text-[var(--color-text-dim)]"
-              >
-                {h}
-              </span>
-            ))}
-          </div>
-        </div>
+        <PhotoGallery photos={profile.gallery} />
       </div>
     </Section>
   )
