@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import { profile } from '../data/content'
 import { GithubIcon, LinkedinIcon } from './icons'
-import { GithubStats } from './GithubStats'
 
 export function Contact() {
   return (
@@ -14,8 +13,8 @@ export function Contact() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-10 text-center sm:p-16"
       >
-        <p className="font-mono text-sm text-[var(--color-accent)]">05. Contact</p>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl">
+        <p className="font-serif text-lg italic text-[var(--color-accent)]">05. Contact</p>
+        <h2 className="mt-3 font-serif text-3xl tracking-tight text-[var(--color-text)] sm:text-4xl">
           Let's build something reliable.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[var(--color-text-dim)]">
@@ -26,7 +25,7 @@ export function Contact() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a
             href={`mailto:${profile.email}`}
-            className="inline-flex items-center gap-2 rounded-md bg-[var(--color-accent)] px-5 py-2.5 font-mono text-sm font-medium text-[#0a0c10] transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-md bg-[var(--color-accent)] px-5 py-2.5 font-mono text-sm font-medium text-[var(--color-on-accent)] transition-transform hover:-translate-y-0.5"
           >
             <Mail size={16} />
             {profile.email}
@@ -52,10 +51,6 @@ export function Contact() {
           >
             <LinkedinIcon size={20} />
           </a>
-        </div>
-
-        <div className="mt-8 flex justify-center">
-          <GithubStats />
         </div>
       </motion.div>
     </section>

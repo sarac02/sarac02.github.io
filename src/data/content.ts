@@ -6,11 +6,13 @@ export const profile = {
   github: 'https://github.com/sarac02',
   linkedin: 'https://www.linkedin.com/in/sara-chaudhari/',
   resume: '/resume.pdf',
-  headshot: '/images/headshot.jpg',
   graduation: '/images/graduation.jpg',
   travel: '/images/travel.jpg',
   blurb:
     "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
+  outsideOfWork:
+    "Outside of work I'm most likely planning the next trip. I like finding a new place and just walking it, hiking it, or floating in the ocean off it, that broken-beach photo is from Nusa Penida, Indonesia. Closer to home you'll find me on a golf course losing balls or on a tennis court losing games with slightly better grace.",
+  hobbies: ['Traveling', 'Hiking', 'Golf', 'Tennis', 'Beaches'],
 }
 
 export type Role = {
@@ -27,9 +29,9 @@ export const experience: Role[] = [
     title: 'Software Engineer Intern',
     period: 'Sept 2025 – Dec 2025',
     bullets: [
-      'Built Python backend orchestration services for distributed AI workflows: request queuing, connection pooling, and failure isolation to keep service reliability up under production load.',
-      'Cut redundant compute and lifted shared-service capacity by 28% with Redis-backed response caching and batched async processing under concurrent production traffic.',
-      'Designed shared configuration and retry utilities adopted across multiple backend services, standardizing failure handling platform-wide.',
+      'Sat in front of a handful of AI response services that all called each other, and none of them handled a slow neighbor gracefully. Added queuing and connection pooling in Python so one laggy call stopped taking the rest down with it.',
+      'Noticed the same query kept hitting the model over and over during traffic spikes. Put Redis-backed caching in front of it, which took about a quarter of that redundant load off the system without touching response quality.',
+      'Tired of every team writing its own retry logic slightly differently, I built one shared retry-and-timeout utility. Three other backend teams adopted it instead of maintaining their own.',
     ],
     tech: ['Python', 'Redis', 'Async I/O', 'Distributed Systems'],
   },
@@ -38,9 +40,9 @@ export const experience: Role[] = [
     title: 'Software Engineer Intern',
     period: 'June 2025 – Sept 2025',
     bullets: [
-      'Built Java workflow execution components handling state transitions, retries, and lifecycle management across 2,000+ pipeline artifacts, containing upstream dependency failures before they cascaded downstream.',
-      'Containerized Python workloads with Docker and Kubernetes on Terraform-managed infrastructure, adding parallel execution and retry logic for dependency failures in batch workflows.',
-      'Automated Jenkins CI/CD validation pipelines in Groovy and Spock, covering regression scenarios and cutting production defects by 20% through systematic pre-deployment testing.',
+      'One stuck workflow job was enough to jam up thousands of tasks waiting behind it. Rebuilt the state-transition and retry handling in Java so a single failure stayed contained instead of cascading.',
+      'A manual rule-processing step was the slowest part of the pipeline. Containerized it and moved it onto Kubernetes with parallel execution, which brought average batch time down by about 20%.',
+      'Regression bugs kept slipping into the workflow engine unnoticed. Wrote a Groovy test suite against Jenkins CI/CD that caught two recurring classes of state-transition bugs before they ever reached release.',
     ],
     tech: ['Java', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins'],
   },
@@ -49,9 +51,9 @@ export const experience: Role[] = [
     title: 'Software Engineer',
     period: 'Apr 2023 – Jul 2024',
     bullets: [
-      'Engineered C++ services on Linux to process streaming user events and run pre-trained models for real-time scoring, cutting end-to-end latency by 30% across 5,000+ daily requests.',
-      'Designed an async pipeline with Redis queues and AWS SQS using producer-consumer batching, decoupling compute from request handling and lifting throughput by 22% at peak load.',
-      'Instrumented a monitoring pipeline comparing live model outputs against offline benchmarks to catch feature inconsistencies early, publishing service health telemetry that shortened debugging cycles.',
+      'The existing scoring path was too slow for real-time use. Rewrote it as a C++ service on Linux that scores events against a pre-trained model inline, cutting median latency by roughly 30%.',
+      'Traffic came in bursts, not evenly, and the service would choke during spikes. Fronted it with Redis-backed queues in a producer-consumer setup so it stayed stable through 5,000+ requests a day at peak.',
+      'Model drift was only ever caught when someone noticed something looked off downstream. Added a daily job comparing live outputs to offline batch results, so drift shows up before anyone has to go looking for it.',
     ],
     tech: ['C++', 'Linux', 'Redis', 'AWS SQS'],
   },
@@ -60,9 +62,9 @@ export const experience: Role[] = [
     title: 'Software Engineer',
     period: 'Sept 2022 – Apr 2023',
     bullets: [
-      'Architected automated data ingestion and feature-generation pipelines, orchestrating preprocessing and scheduled inference runs to cut manual pipeline overhead by 40%.',
-      'Processed 100K+ supply-chain time-series records with Spark on AWS EMR, generating time-based features and cutting end-to-end pipeline latency by 33%.',
-      'Orchestrated Airflow-scheduled scoring and evaluation workflows, improving anomaly-detection accuracy by 15% over rule-based baselines and enabling automated alerting for ops teams.',
+      'Supply-chain reporting relied on a lot of manual pulling and cleaning. Automated the ingestion and feature-generation pipeline end to end, cutting the manual overhead by about 40%.',
+      'Needed features out of raw time-series records fast enough to be useful. Ran rolling-window feature generation over 100K+ inventory records with Spark on EMR, which cut end-to-end latency by a third.',
+      'Anomaly alerts were rule-based and missed a lot. Wired the anomaly-scoring workflow through Airflow with a better model behind it, improving detection accuracy by 15% over the old rules and giving ops team automated alerts instead of manual checks.',
     ],
     tech: ['Spark', 'AWS EMR', 'Airflow', 'Python'],
   },
@@ -87,16 +89,6 @@ export const research: Research[] = [
       'Built reproducible experimentation pipelines on Linux-based Kubernetes clusters for consistent cross-environment evaluation, using structural Hamming distance and intervention-accuracy metrics.',
     ],
     tech: ['Kubernetes', 'Docker', 'Causal ML', 'Python'],
-  },
-  {
-    org: 'Data Science Wizards',
-    title: 'ML Research Assistant',
-    period: 'Jul 2023 – Apr 2024',
-    bullets: [
-      'Developed and optimized document retrieval and summarization pipelines using LLaMA2 and Hugging Face Transformers, reaching 94.8% accuracy on benchmark information-extraction datasets.',
-      'Integrated multimodal alignment with LLaVA, linking images with retrieved text to improve search relevance by 20%.',
-    ],
-    tech: ['LLaMA2', 'Hugging Face', 'LLaVA', 'Python'],
   },
 ]
 
@@ -153,12 +145,13 @@ export const projects: Project[] = [
   },
   {
     name: 'LLM Avalon Simulator',
-    tagline: 'Multi-agent deception and hidden-role reasoning',
+    tagline: 'Hidden roles, private knowledge, zero visibility into other agents',
     description:
-      'A full simulation of the social-deduction game The Resistance: Avalon, played entirely by LLM agents. Each agent holds a hidden role, reasons privately about who to trust, and has to bluff, accuse, or stay quiet without ever seeing another agent’s internal state.',
+      'A full simulation of The Resistance: Avalon, the hidden-role social deduction game, played entirely by LLM agents. Each agent gets a secret role and private knowledge and sees only what a human player would: chat, proposed teams, votes, and quest outcomes, nothing else.',
     bullets: [
-      'Modeled every role (Merlin, Percival, Assassin, and the rest) as an independent agent with role-specific knowledge, incentives, and prompting.',
-      'Built the full game loop: team proposals, voting, missions, and end-game assassination, with a dedicated planning-and-accusation logging layer to trace exactly why an agent voted or accused the way it did.',
+      'Built guardrails against the failure modes LLMs actually hit in this game: fact-checking every message against the real quest and vote history so agents can\'t invent outcomes, scanning for role and prompt leaks before a message reaches the log, and auto-retrying vague responses that dodge naming names.',
+      'Implemented the real Avalon rulebook as a state machine, exact team sizes and fail thresholds for 5 to 10 players, the fifth-rejected-proposal-ends-the-game rule, and the Assassin\'s Merlin-guess endgame, with a hard runtime check that refuses to start an illegally configured game.',
+      'Added a structured per-turn accusation output (who each agent suspects, who they trust, and why) logged separately from the chat transcript, so suspicion patterns can be analyzed turn by turn instead of parsed back out of free text.',
     ],
     tech: ['Python', 'LLM Orchestration', 'Multi-Agent Systems'],
     github: 'https://github.com/sarac02/llm-avalon-simulator',

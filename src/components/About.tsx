@@ -37,31 +37,6 @@ export function About() {
         </div>
 
         <div className="md:col-span-2">
-          <div className="mb-6 grid grid-cols-2 gap-3">
-            <div className="overflow-hidden rounded-lg border border-[var(--color-border)]">
-              <img
-                src={profile.graduation}
-                alt="Sara at her UC San Diego graduation"
-                className="aspect-[3/4] w-full object-cover object-top"
-                loading="lazy"
-              />
-              <p className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1.5 font-mono text-[11px] text-[var(--color-text-faint)]">
-                UCSD, Class of 2026
-              </p>
-            </div>
-            <div className="overflow-hidden rounded-lg border border-[var(--color-border)]">
-              <img
-                src={profile.travel}
-                alt="Sara outside of work"
-                className="aspect-[3/4] w-full object-cover"
-                loading="lazy"
-              />
-              <p className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1.5 font-mono text-[11px] text-[var(--color-text-faint)]">
-                Outside of work
-              </p>
-            </div>
-          </div>
-
           <p className="mb-4 font-mono text-xs uppercase tracking-wider text-[var(--color-text-faint)]">Toolbox</p>
           <div className="space-y-5">
             {skills.map((group) => (
@@ -78,6 +53,32 @@ export function About() {
                   ))}
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-16 grid items-center gap-10 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-10 md:grid-cols-[1fr_1.2fr]">
+        <div className="overflow-hidden rounded-xl border border-[var(--color-border)]">
+          <img
+            src={profile.travel}
+            alt="Sara on a hike overlooking a beach in Nusa Penida, Indonesia"
+            className="aspect-[4/5] w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <div>
+          <p className="font-serif text-2xl italic text-[var(--color-accent-dim)]">Outside of work</p>
+          <p className="mt-4 leading-relaxed text-[var(--color-text-dim)]">{profile.outsideOfWork}</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {profile.hobbies.map((h) => (
+              <span
+                key={h}
+                className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 text-sm text-[var(--color-text-dim)]"
+              >
+                {h}
+              </span>
             ))}
           </div>
         </div>
