@@ -1,0 +1,256 @@
+\documentclass[9pt, letterpaper]{extarticle}
+
+\usepackage[
+    ignoreheadfoot,
+    top=0.55 cm,
+    bottom=0.20 cm,
+    left=0.60 cm,
+    right=0.60 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Sara Chaudhari CV},
+    pdfauthor={Sara Chaudhari},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+\fi
+
+\usepackage{charter}
+
+\raggedright
+\linespread{0.93}
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{2\baselineskip}\bfseries\fontsize{9.5pt}{10pt}\selectfont}{}{0pt}{}
+[\vspace{0.5pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.08 cm}{0.06 cm}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\newenvironment{highlights}{
+    \begin{itemize}[topsep=0.0 cm,parsep=0.0 cm,partopsep=0.0 cm,partopsep=0pt,itemsep=0pt,leftmargin=8pt]
+}{\end{itemize}}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0 cm + 0.00001 cm}{0 cm + 0.00001 cm}
+}{\end{adjustwidth}}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry\def\secondColumn{#2}\setcolumnwidth{\fill, 4.5 cm}\begin{paracol}{2}
+}{\switchcolumn \raggedleft \secondColumn\end{paracol}\endonecolentry}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.0}
+}{\par\kern\topsep}
+
+\let\hrefWithoutArrow\href
+
+\begin{document}
+    \newcommand{\AND}{\unskip\cleaders\copy\ANDbox\hskip\wd\ANDbox\ignorespaces}
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+    \fontsize{21 pt}{21 pt}\selectfont \textbf{Sara Chaudhari}
+
+    \vspace{2 pt}
+        \normalsize
+        \textit{Software Engineer, Backend Systems \& ML Infrastructure}
+    \vspace{1.5 pt}
+
+        \normalsize
+        \mbox{\hrefWithoutArrow{mailto:s2chaudhari@ucsd.edu}{s2chaudhari@ucsd.edu}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:+17138871369}{+1 713 887 1369}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/sara-chaudhari-117791220/}{linkedin.com/in/sara-chaudhari-117791220}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/sarac02}{github.com/sarac02}}%
+        \kern 5.0 pt%
+        \\
+    \end{header}
+    \vspace{2pt}
+
+    \section{EDUCATION}
+
+    \begin{twocolentry}{Sept 2024 -- Jun 2026\\GPA: 3.9/4.0}
+        \textbf{University of California, San Diego}, MS in Computer Science and Engineering
+    \end{twocolentry}
+    \vspace{2pt}
+    \begin{onecolentry}
+        {\footnotesize\itshape Relevant Coursework: Distributed Systems, Operating Systems, Computer Networks, Machine Learning Systems, Advanced Algorithms}
+    \end{onecolentry}
+    \vspace{4pt}
+
+    \begin{twocolentry}{Aug 2020 -- Jun 2024\\GPA: 4.0/4.0}
+        \textbf{University of Mumbai}, BE in Computer Engineering
+    \end{twocolentry}
+    \vspace{-11pt}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Honors in Artificial Intelligence and Machine Learning
+        \end{highlights}
+    \end{onecolentry}
+
+    \section{EXPERIENCE}
+
+    \begin{twocolentry}{Sept 2025 -- Dec 2025}
+        \textbf{Genies} \textperiodcentered\ \textit{Software Engineer Intern}
+    \end{twocolentry}
+    \vspace{0.01 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built a Python orchestration layer in front of several AI response services, adding request queuing and connection pooling so one slow downstream call no longer stalled the rest.
+            \item Added Redis-backed response caching for repeated queries, cutting redundant model calls by roughly 25\% during peak concurrent traffic without changing response quality.
+            \item Wrote a shared retry-and-timeout utility that three other backend teams adopted, replacing each team's one-off error handling with a single tested, consistent approach.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \begin{twocolentry}{June 2025 -- Sept 2025}
+        \textbf{Dassault Syst\`{e}mes Americas Corp.} \textperiodcentered\ \textit{Software Engineer Intern}
+    \end{twocolentry}
+    \vspace{0.01 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built Java services managing state transitions and retries for engineering workflow jobs, containing failures so one stuck task stopped blocking the 2,000+ dependent tasks behind it.
+            \item Migrated a manual rule-processing step to a containerized Java job on Kubernetes, cutting average batch processing time for workflow artifacts by about 20\%.
+            \item Wrote Jenkins-based regression tests in Groovy for the workflow engine's core paths, catching two recurring classes of state-transition bugs before they reached release.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \begin{twocolentry}{Apr 2023 -- Jul 2024}
+        \textbf{UpSolve Solutions} \textperiodcentered\ \textit{Software Engineer}
+    \end{twocolentry}
+    \vspace{0.01 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Wrote a C++ service on Linux that scored incoming user events against a pre-trained model in real time, cutting median response latency by about 30\%.
+            \item Built a producer-consumer pipeline on Redis-backed queues to absorb traffic bursts, keeping the scoring service stable across 5,000+ requests per day at peak load.
+            \item Added a daily job comparing live model outputs against offline batch results, surfacing drift early and cutting time spent chasing silent scoring bugs.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \begin{twocolentry}{Sept 2022 -- Apr 2023}
+        \textbf{Garg Group} \textperiodcentered\ \textit{Software Engineer}
+    \end{twocolentry}
+    \vspace{0.01 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built Python ETL pipelines that ingested daily supply-chain files, validated schema consistency, and loaded cleaned records into a shared warehouse table for reporting.
+            \item Engineered rolling-window features from 100K+ inventory records to feed an anomaly-detection model that flagged irregular stock movements for the operations team.
+            \item Set up Airflow DAGs to run nightly scoring and refresh dashboards automatically, cutting report turnaround from about a day to under an hour.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \section{RESEARCH EXPERIENCE}
+
+    \begin{twocolentry}{Mar 2025 -- Sept 2025}
+        \textbf{University of California, San Diego} \textperiodcentered\ \textit{Graduate Researcher}
+    \end{twocolentry}
+    \vspace{0.01 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built a Kubernetes-based experimentation framework that ran 40+ training and evaluation configurations in parallel over a 2M-record dataset, cutting per-experiment setup time from hours to minutes.
+            \item Containerized the lab's evaluation pipeline with Docker so results were reproducible across three lab machines, replacing a manual setup that had produced inconsistent runs.
+            \item Built a benchmarking harness comparing model variants on structural-recovery accuracy, showing an 18\% improvement for the group's new method over its prior baseline.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \section{KEY PROJECTS}
+
+    \begin{twocolentry}{\hrefWithoutArrow{https://github.com/sarac02/hybrid-retrieval}{Code}}
+        \textbf{Hybrid Semantic Retrieval and Ranking System}
+    \end{twocolentry}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built a hybrid search system combining BM25 with FAISS-indexed sentence embeddings, fused by reciprocal rank instead of blending incomparable raw scores.
+            \item Measured a 4.9\% NDCG@10 and 8.1\% Recall@50 gain over BM25 alone on a labeled benchmark, and load-tested indexing and query latency at 1M documents.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \begin{twocolentry}{\hrefWithoutArrow{https://github.com/sarac02/distributed-log-index}{Code}}
+        \textbf{Distributed Log Indexing and Search System}
+    \end{twocolentry}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built a sharded log indexing engine in Java with a parallel per-shard build phase and concurrent cross-shard query fan-out.
+            \item Measured a 2.83x indexing speedup over single-threaded on 6M log lines (587MB), with cross-shard query latency under 420ms.
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.02 cm}
+
+    \vspace{0.03 cm}
+    \section{PUBLICATIONS}
+
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{Genome Sequence Analysis and Drug -- Target Interaction Prediction using Deep Learning} (\hrefWithoutArrow{https://link.springer.com/chapter/10.1007/978-981-97-4149-6_39}{Link}) \\
+            Springer Innovative Computing and Communications, LNNS Series (Vol. 1038)
+            \item \textbf{Two-Pass Pipeline for Automated Medical Infographic Generation Using Text Summarization} (Poster) \\
+            Poster presentation, SmartDataCom: International Conference on Smart Data Processing, Communication and Networking (2024)
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.03 cm}
+    \section{SKILLS}
+    \begin{onecolentry}
+        \textbf{Languages:} Python, Java, C++, TypeScript, SQL
+    \end{onecolentry}
+    \vspace{0 cm}
+    \begin{onecolentry}
+        \textbf{Backend \& Distributed Systems:} Multithreading, Async I/O, Message Queues, Microservices, REST APIs, Linux
+    \end{onecolentry}
+    \vspace{0 cm}
+    \begin{onecolentry}
+        \textbf{Cloud \& Infrastructure:} AWS, Docker, Kubernetes, Terraform, Jenkins CI/CD, Airflow
+    \end{onecolentry}
+    \vspace{0 cm}
+    \begin{onecolentry}
+        \textbf{Data \& ML Systems:} PostgreSQL, Redis, Spark, PyTorch, Feature Pipelines, Model Serving
+    \end{onecolentry}
+    \vspace{0 cm}
+    \begin{onecolentry}
+        \textbf{Practices:} Monitoring \& Alerting, Automated Testing, Performance Profiling, Git
+    \end{onecolentry}
+
+\end{document}

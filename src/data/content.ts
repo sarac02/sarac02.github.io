@@ -8,8 +8,9 @@ export const profile = {
   resume: '/resume.pdf',
   headshot: '/images/headshot.jpg',
   graduation: '/images/graduation.jpg',
+  travel: '/images/travel.jpg',
   blurb:
-    "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. Currently finishing my MS at UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
+    "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
 }
 
 export type Role = {
@@ -111,6 +112,32 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: 'Hybrid Semantic Retrieval and Ranking System',
+    tagline: 'Measured gains over BM25 on a real labeled benchmark',
+    description:
+      'A hybrid search system combining BM25 lexical retrieval with FAISS-indexed sentence embeddings, fused with Reciprocal Rank Fusion. Evaluated against a BM25-only baseline on SciFact, a labeled IR benchmark from the BEIR suite, and load-tested at 1 million documents.',
+    bullets: [
+      'Measured a 4.9% NDCG@10, 5.6% MAP, and 8.1% Recall@50 gain over BM25 alone on SciFact\'s 300 labeled test queries, using rank fusion instead of blending raw, incomparable scores.',
+      'Load-tested indexing and query latency at 1M synthetic documents, isolating BM25\'s linear-scan query cost as the real bottleneck at that scale, not the vector index.',
+    ],
+    tech: ['Python', 'FAISS', 'Sentence-Transformers', 'BM25'],
+    github: 'https://github.com/sarac02/hybrid-retrieval',
+    featured: true,
+  },
+  {
+    name: 'Distributed Log Indexing and Search System',
+    tagline: 'Sharded, multithreaded search with a measured 2.83x speedup',
+    description:
+      'A sharded log indexing and search engine that partitions incoming logs across shards, builds each shard\'s inverted index in parallel, then fans queries out across every shard concurrently and merges the results.',
+    bullets: [
+      'Split indexing into a single-threaded parse/partition phase and a parallel per-shard build phase, measuring a real 2.83x speedup building an 8-shard index over 6M log lines (587MB) on 8 threads versus 1.',
+      'Benchmarked concurrent cross-shard query fan-out, resolving multi-million-hit term searches across 8 shards in 150 to 415ms.',
+    ],
+    tech: ['Java', 'Multithreading', 'CompletableFuture', 'Inverted Index'],
+    github: 'https://github.com/sarac02/distributed-log-index',
+    featured: true,
+  },
+  {
     name: 'WorkoutSync',
     tagline: 'Real-time state sync across three unsynchronized clocks',
     description:
@@ -148,19 +175,6 @@ export const projects: Project[] = [
     ],
     tech: ['PyTorch', 'LSTM', 'VAE', 'GAN'],
     github: 'https://github.com/sarac02/Hybrid-LSTM-VAE-GAN-for-Time-Series-Anomaly-Detection',
-    featured: true,
-  },
-  {
-    name: 'Multi-PDF RAG Chatbot',
-    tagline: 'Retrieval-augmented Q&A across documents at once',
-    description:
-      'A retrieval-augmented chatbot that answers natural-language questions across multiple PDFs in a single conversation, including numeric lookups like revenue or profit figures buried inside tables.',
-    bullets: [
-      'Built the document pipeline with PyPDF2 and pdf2image for parsing and chunking, backed by a Chroma vector store for similarity search over embeddings.',
-      'Used LangChain to orchestrate retrieval and Hugging Face Transformers for generation, so a single query can pull context from several source documents at once.',
-    ],
-    tech: ['LangChain', 'Chroma', 'Hugging Face', 'Python'],
-    github: 'https://github.com/sarac02/chatwithPDFs',
     featured: true,
   },
   {

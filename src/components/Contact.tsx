@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import { profile } from '../data/content'
 import { GithubIcon, LinkedinIcon } from './icons'
+import { GithubStats } from './GithubStats'
 
 export function Contact() {
   return (
@@ -18,7 +19,7 @@ export function Contact() {
           Let's build something reliable.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[var(--color-text-dim)]">
-          I'm currently looking for full-time SWE and ML infrastructure roles starting 2026. If you're hiring,
+          I'm looking for full-time SWE and ML infrastructure roles. If you're hiring,
           or just want to talk systems, my inbox is open.
         </p>
 
@@ -51,6 +52,10 @@ export function Contact() {
           >
             <LinkedinIcon size={20} />
           </a>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <GithubStats />
         </div>
       </motion.div>
     </section>

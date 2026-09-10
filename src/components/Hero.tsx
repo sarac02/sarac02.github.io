@@ -25,7 +25,7 @@ export function Hero() {
         <div className="min-w-0">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 font-mono text-xs text-[var(--color-text-dim)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-good)]" />
-            MS CSE @ UC San Diego · open to SWE &amp; ML infra roles
+            MS CSE, UC San Diego '26 · open to SWE &amp; ML infra roles
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight text-[var(--color-text)] sm:text-6xl">

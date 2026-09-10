@@ -8,7 +8,7 @@ export function About() {
       <div className="grid gap-10 md:grid-cols-5">
         <div className="md:col-span-3">
           <p className="leading-relaxed text-[var(--color-text-dim)]">
-            I'm a Master's student in Computer Science and Engineering at UC San Diego, focused on{' '}
+            I'm a Software Engineer with an MS in Computer Science and Engineering from UC San Diego, focused on{' '}
             <span className="text-[var(--color-text)]">distributed systems, backend infrastructure, and the
             operational side of ML</span>: the services, pipelines, and tooling that keep models and APIs
             reliable once they leave a notebook. My approach to production code is to think about failure
@@ -37,16 +37,29 @@ export function About() {
         </div>
 
         <div className="md:col-span-2">
-          <div className="mb-6 overflow-hidden rounded-lg border border-[var(--color-border)]">
-            <img
-              src={profile.graduation}
-              alt="Sara at her UC San Diego graduation"
-              className="aspect-[3/4] w-full object-cover object-top"
-              loading="lazy"
-            />
-            <p className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 font-mono text-xs text-[var(--color-text-faint)]">
-              UC San Diego, MS Class of 2026
-            </p>
+          <div className="mb-6 grid grid-cols-2 gap-3">
+            <div className="overflow-hidden rounded-lg border border-[var(--color-border)]">
+              <img
+                src={profile.graduation}
+                alt="Sara at her UC San Diego graduation"
+                className="aspect-[3/4] w-full object-cover object-top"
+                loading="lazy"
+              />
+              <p className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1.5 font-mono text-[11px] text-[var(--color-text-faint)]">
+                UCSD, Class of 2026
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-lg border border-[var(--color-border)]">
+              <img
+                src={profile.travel}
+                alt="Sara outside of work"
+                className="aspect-[3/4] w-full object-cover"
+                loading="lazy"
+              />
+              <p className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1.5 font-mono text-[11px] text-[var(--color-text-faint)]">
+                Outside of work
+              </p>
+            </div>
           </div>
 
           <p className="mb-4 font-mono text-xs uppercase tracking-wider text-[var(--color-text-faint)]">Toolbox</p>
