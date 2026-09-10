@@ -12,13 +12,13 @@ export function About() {
             I'm a Software Engineer with an MS in Computer Science and Engineering from UC San Diego, focused on{' '}
             <span className="text-[var(--color-text)]">distributed systems, backend infrastructure, and the
             operational side of ML</span>: the services, pipelines, and tooling that keep models and APIs
-            reliable once they leave a notebook. My approach to production code is to think about failure
+            reliable once they leave a notebook. My approach to production code is simple: think about failure
             modes first, then optimize.
           </p>
           <p className="mt-4 leading-relaxed text-[var(--color-text-dim)]">
-            Outside of backend work, I've done graduate research in causal inference and published two papers
-            in applied ML. I like projects that sit at the intersection of the two: systems that have to run
-            ML reliably, not just run it once.
+            Alongside that, I've done graduate research in causal inference and published two papers in
+            applied ML. The two feed each other, I care most about projects at their intersection: systems
+            built to run ML reliably, not just prove once that it can.
           </p>
 
           <div className="mt-8 space-y-4">
@@ -29,8 +29,11 @@ export function About() {
                   <p className="font-medium text-[var(--color-text)]">{e.degree}</p>
                   <p className="text-sm text-[var(--color-text-dim)]">{e.school}</p>
                   <p className="mt-1 font-mono text-xs text-[var(--color-text-faint)]">
-                    {e.period} · {e.detail}
+                    {e.period} · {e.gpa}
                   </p>
+                  {e.honors && (
+                    <p className="mt-1 text-xs italic text-[var(--color-accent-dim)]">{e.honors}</p>
+                  )}
                 </div>
               </div>
             ))}
@@ -59,8 +62,8 @@ export function About() {
         </div>
       </div>
 
-      <div className="mt-16 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-10">
-        <p className="font-serif text-2xl italic text-[var(--color-accent-dim)]">Outside of work</p>
+      <div className="mt-16 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-10">
+        <p className="font-display text-2xl font-bold text-[var(--color-accent)]">Outside of work</p>
         <p className="mt-4 max-w-2xl leading-relaxed text-[var(--color-text-dim)]">{profile.outsideOfWork}</p>
         <div className="mt-5 mb-8 flex flex-wrap gap-2">
           {profile.hobbies.map((h) => (

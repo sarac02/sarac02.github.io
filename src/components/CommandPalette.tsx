@@ -111,7 +111,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
             exit={{ opacity: 0, y: -12, scale: 0.98 }}
             transition={{ duration: 0.15 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-lg overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-2xl"
+            className="w-full max-w-lg overflow-hidden rounded-md border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-2xl"
           >
             <div className="flex items-center gap-2.5 border-b border-[var(--color-border)] px-4 py-3">
               <Search size={16} className="shrink-0 text-[var(--color-text-faint)]" />

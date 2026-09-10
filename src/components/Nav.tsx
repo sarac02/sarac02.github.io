@@ -27,8 +27,8 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${
-        scrolled ? 'border-[var(--color-border)] bg-[var(--color-bg)]/85 backdrop-blur' : 'border-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-colors ${
+        scrolled ? 'bg-[var(--color-bg)]/90 shadow-[0_1px_0_var(--color-border)] backdrop-blur' : ''
       }`}
     >
       <div className="h-[2px] w-full bg-[var(--color-border)]/40">
@@ -38,24 +38,23 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
         />
       </div>
 
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
-        <a href="#home" className="font-mono text-sm font-bold text-[var(--color-text)]">
-          sara<span className="text-[var(--color-accent)]">c.</span>
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5 sm:px-8">
+        <a href="#home" className="font-display text-xl font-bold text-[var(--color-text)]">
+          Sara <span className="text-[var(--color-accent)]">C.</span>
         </a>
 
-        <ul className="hidden items-center gap-8 font-mono text-sm text-[var(--color-text-dim)] md:flex">
+        <ul className="hidden items-center gap-8 text-[15px] text-[var(--color-text-dim)] md:flex">
           {LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className={`relative py-1 transition-colors hover:text-[var(--color-text)] ${
-                  active === l.id ? 'text-[var(--color-accent)]' : ''
+                className={`border-b-2 pb-0.5 transition-colors hover:text-[var(--color-text)] ${
+                  active === l.id
+                    ? 'border-[var(--color-accent)] text-[var(--color-accent)]'
+                    : 'border-transparent'
                 }`}
               >
                 {l.label}
-                {active === l.id && (
-                  <span className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-[var(--color-accent)]" />
-                )}
               </a>
             </li>
           ))}
@@ -75,7 +74,7 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-3 py-1.5 font-mono text-sm text-[var(--color-text)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-3.5 py-1.5 text-sm text-[var(--color-text)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             <FileDown size={14} />
             Resume
@@ -94,7 +93,7 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-[var(--color-border)] bg-[var(--color-bg)] px-6 py-4 font-mono text-sm text-[var(--color-text-dim)] md:hidden">
+        <ul className="flex flex-col gap-1 border-t border-[var(--color-border)] bg-[var(--color-bg)] px-6 py-4 text-sm text-[var(--color-text-dim)] md:hidden">
           {LINKS.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="block py-2" onClick={() => setOpen(false)}>

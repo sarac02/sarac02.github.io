@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { FileDown, Mail } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FileDown } from 'lucide-react'
 import { profile } from '../data/content'
-import { GithubIcon, LinkedinIcon } from './icons'
 
 const ROLES = ['backend systems', 'ML infrastructure', 'distributed services', 'data pipelines']
 
@@ -23,12 +22,29 @@ export function Hero() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="min-w-0 order-2 md:order-1"
         >
-          <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-[var(--color-text)] sm:text-6xl">
+          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-[var(--color-text)] sm:text-6xl">
             Sara Chaudhari
           </h1>
 
-          <p className="mt-4 font-serif text-2xl italic text-[var(--color-accent-dim)] sm:text-3xl">
-            I build <span key={roleIndex}>{ROLES[roleIndex]}</span>
+          <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-display text-2xl font-medium text-[var(--color-accent)] sm:text-3xl">
+            <span>I build</span>
+            <span className="relative inline-grid">
+              <span className="invisible whitespace-nowrap">
+                {ROLES.reduce((a, b) => (a.length > b.length ? a : b))}
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roleIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  className="absolute inset-0 whitespace-nowrap"
+                >
+                  {ROLES[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </p>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-[var(--color-text-dim)] sm:text-lg">
@@ -51,34 +67,6 @@ export function Hero() {
             >
               Get in touch
             </a>
-
-            <div className="flex items-center gap-4 pt-2 sm:pt-0">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="text-[var(--color-text-dim)] transition-colors hover:text-[var(--color-accent)]"
-              >
-                <GithubIcon size={20} />
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="text-[var(--color-text-dim)] transition-colors hover:text-[var(--color-accent)]"
-              >
-                <LinkedinIcon size={20} />
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                aria-label="Email"
-                className="text-[var(--color-text-dim)] transition-colors hover:text-[var(--color-accent)]"
-              >
-                <Mail size={20} />
-              </a>
-            </div>
           </div>
         </motion.div>
 
@@ -89,11 +77,11 @@ export function Hero() {
           className="order-1 md:order-2"
         >
           <div className="relative mx-auto max-w-sm md:ml-auto md:mr-0">
-            <div className="absolute -inset-3 -z-10 rotate-2 rounded-2xl bg-[var(--color-surface)]" />
+            <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full border-2 border-[var(--color-accent)]" />
             <img
               src={profile.heroPhoto}
               alt="Sara Chaudhari at her UC San Diego graduation"
-              className="aspect-[4/5] w-full rounded-2xl border border-[var(--color-border)] object-cover object-top shadow-sm"
+              className="aspect-[4/5] w-full border border-[var(--color-border)] object-cover object-top"
             />
           </div>
         </motion.div>

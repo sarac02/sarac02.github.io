@@ -21,8 +21,10 @@ export function Section({
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="mb-10 flex items-baseline gap-3"
       >
-        <span className="font-serif text-lg italic text-[var(--color-accent)]">{index}</span>
-        <h2 className="font-serif text-3xl tracking-tight text-[var(--color-text)] sm:text-4xl">{title}</h2>
+        <span className="flex h-6 items-center rounded border border-[var(--color-accent)] px-1.5 font-mono text-xs font-medium text-[var(--color-accent)]">
+          {index}
+        </span>
+        <h2 className="font-display text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl">{title}</h2>
         <span className="h-px flex-1 bg-[var(--color-border)]" />
       </motion.div>
       {children}

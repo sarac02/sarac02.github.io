@@ -82,7 +82,7 @@ function ResearchItem({ item, index }: { item: ResearchT; index: number }) {
 export function Experience() {
   return (
     <Section id="experience" index="02." title="Experience">
-      <p className="mb-10 max-w-2xl font-serif text-xl italic leading-snug text-[var(--color-accent-dim)]">
+      <p className="mb-10 max-w-2xl border-l-2 border-[var(--color-accent)] pl-4 font-display text-xl font-medium leading-snug text-[var(--color-accent-dim)]">
         {profile.experiencePhilosophy}
       </p>
 

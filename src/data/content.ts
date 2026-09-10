@@ -11,12 +11,12 @@ export const profile = {
     { src: '/images/bali.jpg', caption: 'Nusa Penida, Bali', alt: 'Sara at Broken Beach in Nusa Penida, Bali' },
     { src: '/images/bigbear.jpg', caption: 'Big Bear Lake, CA', alt: 'Sara at sunset by Big Bear Lake' },
     { src: '/images/la.jpg', caption: 'Griffith Observatory, LA', alt: 'Sara at Griffith Observatory with the Hollywood sign behind her' },
-    { src: '/images/golf.jpg', caption: 'Sorrento Valley Driving Range', alt: 'Sara mid-swing at a golf driving range' },
+    { src: '/images/golf.jpg', caption: 'Golf', alt: 'Sara mid-swing at a golf driving range' },
   ],
   blurb:
     "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
   outsideOfWork:
-    "Outside of work I'm most likely planning the next trip. I like finding a new place and just walking it, hiking it, or floating in the ocean off it, that broken-beach photo is from Nusa Penida, Indonesia. Closer to home you'll find me on a golf course losing balls or on a tennis court losing games with slightly better grace.",
+    "Most weekends I'm either planning the next trip or still recovering from the last one. I like finding somewhere new and just being in it: walking it, hiking it, floating in the water off it. Closer to home, that same restlessness shows up as golf I'm slowly getting less bad at and tennis I'm still losing, gracefully, I hope.",
   hobbies: ['Traveling', 'Hiking', 'Golf', 'Tennis', 'Beaches'],
   experiencePhilosophy:
     "I care less about the feature shipping and more about what happens the week after, when it's under real traffic and something inevitably goes sideways. Most of what I've actually gotten paid for is the unglamorous work of making sure that week goes fine.",
@@ -216,7 +216,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'Tooling',
-    items: ['Jenkins', 'Git', 'GitHub Actions', 'Cursor', 'Claude Code'],
+    items: ['Jenkins', 'Git', 'Cursor', 'Claude Code'],
   },
 ]
 
@@ -225,12 +225,14 @@ export const education = [
     school: 'University of California, San Diego',
     degree: 'MS, Computer Science and Engineering',
     period: 'Sept 2024 – Jun 2026',
-    detail: 'GPA 3.9/4.0',
+    gpa: 'GPA 3.9/4.0',
+    honors: null,
   },
   {
     school: 'A.P. Shah Institute of Technology, University of Mumbai',
     degree: 'BE, Computer Engineering',
     period: 'Aug 2020 – Jun 2024',
-    detail: 'GPA 3.9/4.0 · Honors in Artificial Intelligence and Machine Learning',
+    gpa: 'GPA 3.9/4.0',
+    honors: 'Honors in Artificial Intelligence and Machine Learning',
   },
 ]
