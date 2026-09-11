@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Search, Layers, Watch, Drama, Activity, Dna } from 'lucide-react'
+import { ArrowUpRight, Search, Layers, Watch, Drama, Activity, Gauge } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Section } from './Section'
 import { projects } from '../data/content'
@@ -11,7 +11,7 @@ const PROJECT_ICONS: Record<string, LucideIcon> = {
   WorkoutSync: Watch,
   'LLM Avalon Simulator': Drama,
   'Hybrid LSTM-VAE-GAN Anomaly Detector': Activity,
-  'Genome Sequence & Drug-Target Interaction Analysis': Dna,
+  'Distributed Rate Limiter & Circuit Breaker': Gauge,
 }
 
 export function Projects() {

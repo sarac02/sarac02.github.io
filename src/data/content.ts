@@ -139,12 +139,12 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: 'Genome Sequence & Drug-Target Interaction Analysis',
-    tagline: 'Peer-reviewed, Springer LNNS Series',
+    name: 'Distributed Rate Limiter & Circuit Breaker',
+    tagline: 'Naive limiter overcounts by 4 under load; the atomic version doesn\'t',
     description:
-      'Computational biology project analyzing SARS-CoV-2 genomic and alignment data with PCA, clustering, and neural networks, the work behind a peer-reviewed paper on drug-target interaction prediction (see Publications).',
-    tech: ['Python', 'scikit-learn', 'PCA', 'Neural Networks'],
-    github: 'https://github.com/sarac02/Advanced-AI-for-Drug-discovery',
+      'Redis-backed rate limiter (3 algorithms) and circuit breaker, state atomic via Lua scripts. Measured a real race condition in a naive GET-then-INCR limiter under concurrency, and 200ms failed calls dropping to ~1ms once the breaker fails fast.',
+    tech: ['Python', 'Redis', 'Lua', 'Concurrency'],
+    github: 'https://github.com/sarac02/distributed-rate-limiter',
   },
 ]
 
