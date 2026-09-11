@@ -18,10 +18,9 @@ export function Contact() {
           Say hello.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[var(--color-text-dim)]">
-          I'm looking for full-time software engineering and ML infrastructure roles right now,
-          but honestly, I'll talk to almost anyone about a hard systems problem even if you're
-          not hiring. Got a role I should know about, a gnarly bug you can't explain, or you just
-          want to say hi, my inbox is always open.
+          I'm looking for full-time software engineering and ML infrastructure roles. Got a role
+          I should know about, a systems problem worth talking through, or you just want to say
+          hi, my inbox is always open.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

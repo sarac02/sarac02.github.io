@@ -1,59 +1,77 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Search, Layers, Watch, Drama, Activity, Dna } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Section } from './Section'
 import { projects } from '../data/content'
 import { GithubIcon } from './icons'
+
+const PROJECT_ICONS: Record<string, LucideIcon> = {
+  'Hybrid Semantic Retrieval and Ranking System': Search,
+  'Distributed Log Indexing and Search System': Layers,
+  WorkoutSync: Watch,
+  'LLM Avalon Simulator': Drama,
+  'Hybrid LSTM-VAE-GAN Anomaly Detector': Activity,
+  'Genome Sequence & Drug-Target Interaction Analysis': Dna,
+}
 
 export function Projects() {
   return (
     <Section id="projects" index="03." title="Projects">
       <div className="grid gap-5 sm:grid-cols-2">
-        {projects.map((p, i) => (
-          <motion.a
-            key={p.name}
-            href={p.github}
-            target="_blank"
-            rel="noreferrer"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.45, delay: (i % 2) * 0.08, ease: 'easeOut' }}
-            className="group flex flex-col rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-accent)]"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h3 className="font-semibold text-[var(--color-text)]">{p.name}</h3>
-                <p className="mt-0.5 font-mono text-xs text-[var(--color-accent)]">{p.tagline}</p>
-              </div>
-              <span className="flex shrink-0 items-center gap-1 text-[var(--color-text-faint)] transition-colors group-hover:text-[var(--color-accent)]">
-                <GithubIcon size={18} />
-                <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" />
-              </span>
-            </div>
-
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-text-dim)]">{p.description}</p>
-
-            <ul className="mt-3 space-y-1.5">
-              {p.bullets.map((b, bi) => (
-                <li key={bi} className="flex gap-2 text-[13px] leading-relaxed text-[var(--color-text-dim)]">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--color-text-faint)]" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded border border-[var(--color-border)] px-2 py-0.5 font-mono text-[11px] text-[var(--color-text-faint)]"
-                >
-                  {t}
+        {projects.map((p, i) => {
+          const Icon = PROJECT_ICONS[p.name] ?? Search
+          return (
+            <motion.a
+              key={p.name}
+              href={p.github}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.45, delay: (i % 2) * 0.08, ease: 'easeOut' }}
+              className="group flex flex-col rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-accent)]"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-accent)]">
+                    <Icon size={16} />
+                  </span>
+                  <div>
+                    <h3 className="font-semibold text-[var(--color-text)]">{p.name}</h3>
+                    <p className="mt-0.5 font-mono text-xs text-[var(--color-accent)]">{p.tagline}</p>
+                  </div>
+                </div>
+                <span className="flex shrink-0 items-center gap-1 text-[var(--color-text-faint)] transition-colors group-hover:text-[var(--color-accent)]">
+                  <GithubIcon size={18} />
+                  <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" />
                 </span>
-              ))}
-            </div>
-          </motion.a>
-        ))}
+              </div>
+
+              <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-dim)]">{p.description}</p>
+
+              <ul className="mt-3 space-y-1.5">
+                {p.bullets.map((b, bi) => (
+                  <li key={bi} className="flex gap-2 text-[13px] leading-relaxed text-[var(--color-text-dim)]">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--color-text-faint)]" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto flex flex-wrap gap-1.5 border-t border-[var(--color-border)]/60 pt-4">
+                {p.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded border border-[var(--color-border)] px-2 py-0.5 font-mono text-[11px] text-[var(--color-text-faint)]"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.a>
+          )
+        })}
       </div>
     </Section>
   )

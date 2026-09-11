@@ -60,7 +60,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-xl grid-cols-2 gap-3 sm:max-w-2xl sm:gap-4">
         {photos.map((photo) => (
           <TiltCard key={photo.src} photo={photo} onOpen={() => setOpenSrc(photo.src)} />
         ))}

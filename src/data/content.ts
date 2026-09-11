@@ -14,7 +14,7 @@ export const profile = {
     { src: '/images/golf.jpg', caption: 'Golf', alt: 'Sara mid-swing at a golf driving range' },
   ],
   blurb:
-    "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
+    "I build backend systems and ML infrastructure designed to survive contact with production: distributed services, data pipelines, and the reliability layer that keeps models and APIs running under real load. MS in Computer Science and Engineering from UC San Diego, with backend and infrastructure work shipped at Genies, Dassault Systèmes, and two earlier engineering roles along the way.",
   outsideOfWorkTitle: 'Off-Peak',
   outsideOfWork:
     "Most weekends I'm somewhere with a view: a coastline I haven't seen before, a trail I haven't hiked yet, water I can't resist getting into. Bali's broken beach, a frozen sunset over Big Bear, the Hollywood sign from a hill above Griffith Observatory. Closer to home, that same restlessness shows up as golf I'm slowly getting less bad at, and tennis I'm still losing, gracefully, I hope.",
