@@ -17,7 +17,7 @@ export const profile = {
     "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
   outsideOfWorkTitle: 'Off-Peak',
   outsideOfWork:
-    "Most weekends I'm somewhere with a view: a coastline I haven't seen before, a trail I haven't hiked yet, water I can't resist getting into. Bali's broken beach, a frozen sunset over Big Bear, the Hollywood sign from a hill above Griffith Observatory. Closer to home, the same restlessness shows up on a driving range, golf I'm slowly getting less bad at, and a tennis court, where I'm still losing, gracefully, I hope.",
+    "Most weekends I'm somewhere with a view: a coastline I haven't seen before, a trail I haven't hiked yet, water I can't resist getting into. Bali's broken beach, a frozen sunset over Big Bear, the Hollywood sign from a hill above Griffith Observatory. Closer to home, that same restlessness shows up as golf I'm slowly getting less bad at, and tennis I'm still losing, gracefully, I hope.",
   hobbies: ['Traveling', 'Hiking', 'Golf', 'Tennis', 'Beaches'],
 }
 
