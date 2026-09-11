@@ -63,7 +63,7 @@ export function About() {
       </div>
 
       <div className="mt-16 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-10">
-        <p className="font-serif text-2xl italic text-[var(--color-accent-dim)]">Outside of work</p>
+        <p className="font-serif text-2xl italic text-[var(--color-accent-dim)]">{profile.outsideOfWorkTitle}</p>
         <p className="mt-4 max-w-2xl leading-relaxed text-[var(--color-text-dim)]">{profile.outsideOfWork}</p>
         <div className="mt-5 mb-8 flex flex-wrap gap-2">
           {profile.hobbies.map((h) => (

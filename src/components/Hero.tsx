@@ -76,7 +76,7 @@ export function Hero() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="order-1 md:order-2"
         >
-          <div className="relative mx-auto max-w-sm md:ml-auto md:mr-0">
+          <div className="relative mx-auto max-w-md md:ml-auto md:mr-0">
             <div className="absolute -inset-3 -z-10 rotate-2 rounded-2xl bg-[var(--color-surface)]" />
             <img
               src={profile.heroPhoto}

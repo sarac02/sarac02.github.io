@@ -15,11 +15,10 @@ export const profile = {
   ],
   blurb:
     "I build backend systems and ML infrastructure: distributed services, data pipelines, and the plumbing that keeps models and APIs reliable under load. MS in Computer Science and Engineering from UC San Diego, previously shipping backend and infra work at Genies, Dassault Systèmes, and two earlier engineering roles.",
+  outsideOfWorkTitle: 'Off-Peak',
   outsideOfWork:
-    "Most weekends I'm either planning the next trip or still recovering from the last one. I like finding somewhere new and just being in it: walking it, hiking it, floating in the water off it. Closer to home, that same restlessness shows up as golf I'm slowly getting less bad at and tennis I'm still losing, gracefully, I hope.",
+    "Most weekends I'm somewhere with a view: a coastline I haven't seen before, a trail I haven't hiked yet, water I can't resist getting into. Bali's broken beach, a frozen sunset over Big Bear, the Hollywood sign from a hill above Griffith Observatory. Closer to home, the same restlessness shows up on a driving range, golf I'm slowly getting less bad at, and a tennis court, where I'm still losing, gracefully, I hope.",
   hobbies: ['Traveling', 'Hiking', 'Golf', 'Tennis', 'Beaches'],
-  experiencePhilosophy:
-    "I care less about the feature shipping and more about what happens the week after, when it's under real traffic and something inevitably goes sideways. Most of what I've actually gotten paid for is the unglamorous work of making sure that week goes fine.",
 }
 
 export type Role = {
@@ -36,7 +35,7 @@ export const experience: Role[] = [
     title: 'Software Engineer Intern',
     period: 'Sept 2025 – Dec 2025',
     narrative:
-      "Genies had a handful of AI response services that all called each other, and none of them handled a slow neighbor gracefully, one laggy call and the rest backed up behind it. I spent most of my time on the unglamorous plumbing: request queuing and connection pooling so that stopped happening, Redis-backed caching that quietly took about a quarter of the redundant load off the system during peak traffic, and a shared retry-and-timeout utility that three other backend teams ended up adopting instead of writing their own version.",
+      "I owned the reliability layer in front of the AI response services powering Genies' conversational agents: request queuing, connection pooling, and failure isolation so one slow call couldn't cascade into a platform-wide slowdown. I designed Redis-backed response caching and batched async processing that cut redundant model calls by 28% at peak concurrency, then generalized the retry-and-timeout logic into a shared utility three other backend teams adopted in place of their own.",
     tech: ['Python', 'Redis', 'Async I/O', 'Distributed Systems'],
   },
   {
@@ -44,7 +43,7 @@ export const experience: Role[] = [
     title: 'Software Engineer Intern',
     period: 'June 2025 – Sept 2025',
     narrative:
-      "At Dassault Systèmes I worked on the workflow engine behind enterprise product-lifecycle tooling, the kind of system where one stuck job could jam up thousands of tasks waiting behind it. I rebuilt the state-transition and retry handling in Java so a single failure stayed contained instead of cascading, moved a slow manual rule-processing step onto Kubernetes with parallel execution for roughly a 20% speedup, and wrote a Groovy test suite that caught two recurring classes of bugs before they ever reached release.",
+      "I rebuilt core parts of the workflow engine running enterprise product-lifecycle operations, a system where a single stuck job could cascade into thousands of blocked downstream tasks. I redesigned the state-transition and retry handling in Java to contain failures at the source, containerized a slow manual rule-processing step onto Kubernetes with parallel execution for a 20% throughput gain, and wrote a Groovy regression suite that caught two recurring classes of state-transition bugs before they ever reached production.",
     tech: ['Java', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins'],
   },
   {
@@ -52,7 +51,7 @@ export const experience: Role[] = [
     title: 'Software Engineer',
     period: 'Apr 2023 – Jul 2024',
     narrative:
-      "UpSolve is where I first got to own a real-time system end to end. The existing scoring path was too slow for production use, so I rewrote it as a C++ service on Linux, which cut median latency by about 30%, and fronted it with Redis-backed queues so it stayed stable through bursts of 5,000+ requests a day instead of choking. I also built a quiet daily job comparing live model outputs to offline batch results, so drift showed up on its own instead of someone noticing something looked off three weeks later.",
+      "UpSolve is where I first owned a production system end to end. I rewrote the real-time scoring path as a C++ service on Linux, cutting median latency by 30%, and built a Redis-queued producer-consumer pipeline that kept the service stable through bursts of 5,000+ requests a day instead of buckling under load. I also shipped a drift-detection job comparing live model outputs against offline benchmarks daily, catching degradation automatically instead of waiting for someone downstream to notice.",
     tech: ['C++', 'Linux', 'Redis', 'AWS SQS'],
   },
   {
@@ -60,7 +59,7 @@ export const experience: Role[] = [
     title: 'Software Engineer',
     period: 'Sept 2022 – Apr 2023',
     narrative:
-      "My first real engineering job was at Garg Group, doing data engineering for a supply-chain team that was still pulling and cleaning everything by hand. I automated the ingestion and feature pipeline end to end, ran rolling-window feature generation over 100K+ inventory records with Spark, and rebuilt the anomaly-scoring workflow on Airflow with a real model behind it instead of static rules, between the automation and the better model, manual overhead dropped by about 40% and ops finally got alerts instead of a spreadsheet to babysit.",
+      "At Garg Group I built the data infrastructure a supply-chain team didn't have: an automated ingestion and feature pipeline that replaced manual data pulls entirely, a Spark job generating rolling-window features across 100K+ inventory records, and a real anomaly-detection model on Airflow that replaced brittle static rules. Together they cut manual overhead by 40% and gave the operations team automated alerting where they'd previously had none.",
     tech: ['Spark', 'AWS EMR', 'Airflow', 'Python'],
   },
 ]
@@ -69,7 +68,7 @@ export type Research = {
   org: string
   title: string
   period: string
-  bullets: string[]
+  narrative: string
   tech: string[]
 }
 
@@ -78,11 +77,8 @@ export const research: Research[] = [
     org: 'UC San Diego',
     title: 'Graduate Researcher',
     period: 'Mar 2025 – Sept 2025',
-    bullets: [
-      'Investigated causal discovery from observational data under distribution shift and hidden confounding, implementing constraint-based and score-based methods across 40+ controlled experiments.',
-      'Evaluated causal-inference workflows with nonlinear models and missing-data handling, reaching an 18% improvement in structural recovery accuracy over baseline methods.',
-      'Built reproducible experimentation pipelines on Linux-based Kubernetes clusters for consistent cross-environment evaluation, using structural Hamming distance and intervention-accuracy metrics.',
-    ],
+    narrative:
+      "I investigated causal discovery from observational data under distribution shift and hidden confounding, implementing constraint-based and score-based methods across 40+ controlled experiments and reaching an 18% improvement in structural recovery accuracy over baseline methods. To make that experimentation possible at all, I built the infrastructure behind it: a Kubernetes-based framework running 40+ training and evaluation configurations in parallel across a 2M-record dataset, containerized with Docker for reproducibility across lab machines, cutting per-experiment setup time from hours to minutes.",
     tech: ['Kubernetes', 'Docker', 'Causal ML', 'Python'],
   },
 ]
@@ -100,12 +96,12 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: 'Hybrid Semantic Retrieval and Ranking System',
-    tagline: 'Measured gains over BM25 on a real labeled benchmark',
+    tagline: '+4.9% NDCG@10, +8.1% Recall@50 over BM25, measured, not estimated',
     description:
-      'A hybrid search system combining BM25 lexical retrieval with FAISS-indexed sentence embeddings, fused with Reciprocal Rank Fusion. Evaluated against a BM25-only baseline on SciFact, a labeled IR benchmark from the BEIR suite, and load-tested at 1 million documents.',
+      'A production-style hybrid retrieval system fusing BM25 lexical search with FAISS-indexed sentence embeddings through Reciprocal Rank Fusion, benchmarked against a BM25-only baseline on SciFact, a labeled IR benchmark from the BEIR suite, and stress-tested at 1 million documents.',
     bullets: [
-      'Measured a 4.9% NDCG@10, 5.6% MAP, and 8.1% Recall@50 gain over BM25 alone on SciFact\'s 300 labeled test queries, using rank fusion instead of blending raw, incomparable scores.',
-      'Load-tested indexing and query latency at 1M synthetic documents, isolating BM25\'s linear-scan query cost as the real bottleneck at that scale, not the vector index.',
+      'Reached a 4.9% NDCG@10, 5.6% MAP, and 8.1% Recall@50 gain over BM25 alone across SciFact\'s 300 labeled test queries, fusing rankers instead of blending incomparable raw scores.',
+      'Load-tested indexing and query latency at 1M documents, isolating BM25\'s linear-scan cost, not the vector index, as the actual bottleneck at scale.',
     ],
     tech: ['Python', 'FAISS', 'Sentence-Transformers', 'BM25'],
     github: 'https://github.com/sarac02/hybrid-retrieval',
@@ -113,11 +109,11 @@ export const projects: Project[] = [
   },
   {
     name: 'Distributed Log Indexing and Search System',
-    tagline: 'Sharded, multithreaded search with a measured 2.83x speedup',
+    tagline: 'A measured 2.83x indexing speedup, not a projected one',
     description:
-      'A sharded log indexing and search engine that partitions incoming logs across shards, builds each shard\'s inverted index in parallel, then fans queries out across every shard concurrently and merges the results.',
+      'A sharded, multithreaded log search engine built to prove out how far a shard-per-thread design scales on a single machine before you\'d actually need to split shards across nodes, backed by a real benchmark harness rather than back-of-envelope math.',
     bullets: [
-      'Split indexing into a single-threaded parse/partition phase and a parallel per-shard build phase, measuring a real 2.83x speedup building an 8-shard index over 6M log lines (587MB) on 8 threads versus 1.',
+      'Split indexing into a single-threaded parse/partition phase and a parallel per-shard build phase, measuring a 2.83x speedup building an 8-shard index over 6M log lines (587MB) on 8 threads versus 1.',
       'Benchmarked concurrent cross-shard query fan-out, resolving multi-million-hit term searches across 8 shards in 150 to 415ms.',
     ],
     tech: ['Java', 'Multithreading', 'CompletableFuture', 'Inverted Index'],
@@ -154,12 +150,12 @@ export const projects: Project[] = [
   },
   {
     name: 'Hybrid LSTM-VAE-GAN Anomaly Detector',
-    tagline: 'Adversarial training for time-series anomaly detection',
+    tagline: 'Learns what "normal" looks like instead of relying on hand-tuned rules',
     description:
-      'A hybrid deep-learning architecture that fuses a sequence-aware variational autoencoder with an adversarial discriminator, so the model learns what "normal" looks like and flags deviations instead of relying on hand-tuned thresholds.',
+      'A hybrid deep-learning architecture fusing a sequence-aware variational autoencoder with an adversarial discriminator, the research-grade successor to the rule-based anomaly detection I shipped in production at Garg Group.',
     bullets: [
-      'Combined an LSTM-based VAE encoder-decoder with a GAN discriminator: the VAE reconstructs normal temporal patterns, the discriminator sharpens what counts as a convincing reconstruction.',
-      'Built as a research upgrade to the rule-based anomaly detection used in production for supply-chain time-series monitoring.',
+      'Combined an LSTM-based VAE encoder-decoder with a GAN discriminator: the VAE reconstructs normal temporal patterns, the discriminator sharpens what counts as a convincing reconstruction, catching anomalies reconstruction error alone would miss.',
+      'Built as a direct upgrade path from the static rule-based detection used in production for supply-chain time-series monitoring.',
     ],
     tech: ['PyTorch', 'LSTM', 'VAE', 'GAN'],
     github: 'https://github.com/sarac02/Hybrid-LSTM-VAE-GAN-for-Time-Series-Anomaly-Detection',
@@ -167,12 +163,12 @@ export const projects: Project[] = [
   },
   {
     name: 'Genome Sequence & Drug-Target Interaction Analysis',
-    tagline: 'Published research: deep learning on viral genomic data',
+    tagline: 'Peer-reviewed, Springer LNNS Series',
     description:
-      'A computational biology project analyzing SARS-CoV-2 genomic sequences and alignment data, the work that became a peer-reviewed paper on drug-target interaction prediction with deep learning (see Publications).',
+      'A computational biology project analyzing SARS-CoV-2 genomic sequences and alignment data that became a peer-reviewed publication on drug-target interaction prediction with deep learning (see Publications).',
     bullets: [
-      'Applied PCA and k-means clustering to genomic and alignment datasets to surface structure in high-dimensional sequence data.',
-      'Trained linear regression and neural network models to predict alignment bit scores from sequence features.',
+      'Applied PCA and k-means clustering to genomic and alignment datasets to surface structure in high-dimensional sequence data no manual inspection would catch.',
+      'Trained linear regression and neural network models to predict alignment bit scores from sequence features, findings that carried through to publication.',
     ],
     tech: ['Python', 'scikit-learn', 'PCA', 'Neural Networks'],
     github: 'https://github.com/sarac02/Advanced-AI-for-Drug-discovery',
