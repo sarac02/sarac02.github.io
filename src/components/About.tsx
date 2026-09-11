@@ -41,7 +41,7 @@ export function About() {
         </div>
 
         <div className="md:col-span-2">
-          <p className="mb-4 font-mono text-xs uppercase tracking-wider text-[var(--color-text-faint)]">Toolbox</p>
+          <p className="mb-4 font-serif text-lg italic text-[var(--color-accent-dim)]">Technologies I work with</p>
           <div className="space-y-5">
             {skills.map((group) => (
               <div key={group.label}>
