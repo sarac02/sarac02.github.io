@@ -50,15 +50,6 @@ export function Projects() {
 
               <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-dim)]">{p.description}</p>
 
-              <ul className="mt-3 space-y-1.5">
-                {p.bullets.map((b, bi) => (
-                  <li key={bi} className="flex gap-2 text-[13px] leading-relaxed text-[var(--color-text-dim)]">
-                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--color-text-faint)]" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-
               <div className="mt-auto flex flex-wrap gap-1.5 border-t border-[var(--color-border)]/60 pt-4">
                 {p.tech.map((t) => (
                   <span

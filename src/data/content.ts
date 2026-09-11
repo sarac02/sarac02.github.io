@@ -87,7 +87,6 @@ export type Project = {
   name: string
   tagline: string
   description: string
-  bullets: string[]
   tech: string[]
   github?: string
   featured?: boolean
@@ -98,11 +97,7 @@ export const projects: Project[] = [
     name: 'Hybrid Semantic Retrieval and Ranking System',
     tagline: '+4.9% NDCG@10, +8.1% Recall@50 over BM25, measured, not estimated',
     description:
-      'A production-style hybrid retrieval system fusing BM25 lexical search with FAISS-indexed sentence embeddings through Reciprocal Rank Fusion, benchmarked against a BM25-only baseline on SciFact, a labeled IR benchmark from the BEIR suite, and stress-tested at 1 million documents.',
-    bullets: [
-      'Reached a 4.9% NDCG@10, 5.6% MAP, and 8.1% Recall@50 gain over BM25 alone across SciFact\'s 300 labeled test queries, fusing rankers instead of blending incomparable raw scores.',
-      'Load-tested indexing and query latency at 1M documents, isolating BM25\'s linear-scan cost, not the vector index, as the actual bottleneck at scale.',
-    ],
+      'Hybrid search fusing BM25 lexical retrieval with FAISS-indexed sentence embeddings via Reciprocal Rank Fusion. Benchmarked against a BM25-only baseline on SciFact (BEIR), and load-tested at 1M documents to find the real bottleneck at scale.',
     tech: ['Python', 'FAISS', 'Sentence-Transformers', 'BM25'],
     github: 'https://github.com/sarac02/hybrid-retrieval',
     featured: true,
@@ -111,11 +106,7 @@ export const projects: Project[] = [
     name: 'Distributed Log Indexing and Search System',
     tagline: 'A measured 2.83x indexing speedup, not a projected one',
     description:
-      'A sharded, multithreaded log search engine built to prove out how far a shard-per-thread design scales on a single machine before you\'d actually need to split shards across nodes, backed by a real benchmark harness rather than back-of-envelope math.',
-    bullets: [
-      'Split indexing into a single-threaded parse/partition phase and a parallel per-shard build phase, measuring a 2.83x speedup building an 8-shard index over 6M log lines (587MB) on 8 threads versus 1.',
-      'Benchmarked concurrent cross-shard query fan-out, resolving multi-million-hit term searches across 8 shards in 150 to 415ms.',
-    ],
+      'Sharded, multithreaded log search engine in Java: parallel per-shard indexing plus concurrent cross-shard query fan-out. Benchmarked at a 2.83x speedup over single-threaded on 6M log lines (587MB).',
     tech: ['Java', 'Multithreading', 'CompletableFuture', 'Inverted Index'],
     github: 'https://github.com/sarac02/distributed-log-index',
     featured: true,
@@ -124,12 +115,7 @@ export const projects: Project[] = [
     name: 'WorkoutSync',
     tagline: 'Real-time state sync across three unsynchronized clocks',
     description:
-      'A from-scratch clone of the Apple Fitness+ live-overlay experience: workout data captured on Apple Watch, streamed to iPhone and mirrored to Apple TV, with heart rate, calories, and activity rings overlaid on video in real time on all three screens at once.',
-    bullets: [
-      'Built on pure Swift and C++ with no dependency on Apple’s higher-level frameworks: HealthKit capture on-watch, WatchConnectivity to iPhone, MultipeerConnectivity relaying to Apple TV, each leg running its own clock.',
-      'Wrote a plausibility filter that rejects physically impossible sensor readings before they reach the UI, and an interpolation layer that keeps the three-device overlay smooth despite independent, drifting clocks.',
-      'Tested on real builds, not simulators only: caught a watchOS API that silently no-ops, a missing framework link, and a data race that would have crashed playback under load.',
-    ],
+      'From-scratch Apple Fitness+ clone in Swift and C++: workout data streamed from Apple Watch to iPhone and mirrored to Apple TV, with heart rate and activity rings synced live across three independently-clocked devices.',
     tech: ['Swift', 'C++', 'HealthKit', 'Real-Time Systems'],
     github: 'https://github.com/sarac02/WorkoutSync',
     featured: true,
@@ -138,12 +124,7 @@ export const projects: Project[] = [
     name: 'LLM Avalon Simulator',
     tagline: 'Hidden roles, private knowledge, zero visibility into other agents',
     description:
-      'A full simulation of The Resistance: Avalon, the hidden-role social deduction game, played entirely by LLM agents. Each agent gets a secret role and private knowledge and sees only what a human player would: chat, proposed teams, votes, and quest outcomes, nothing else.',
-    bullets: [
-      'Built guardrails against the failure modes LLMs actually hit in this game: fact-checking every message against the real quest and vote history so agents can\'t invent outcomes, scanning for role and prompt leaks before a message reaches the log, and auto-retrying vague responses that dodge naming names.',
-      'Implemented the real Avalon rulebook as a state machine, exact team sizes and fail thresholds for 5 to 10 players, the fifth-rejected-proposal-ends-the-game rule, and the Assassin\'s Merlin-guess endgame, with a hard runtime check that refuses to start an illegally configured game.',
-      'Added a structured per-turn accusation output (who each agent suspects, who they trust, and why) logged separately from the chat transcript, so suspicion patterns can be analyzed turn by turn instead of parsed back out of free text.',
-    ],
+      'The hidden-role game Avalon played entirely by LLM agents, each with a secret role and no visibility into anyone else\'s. Guardrails against hallucinated outcomes and role leaks, a real rules engine, and structured per-turn accusation logging.',
     tech: ['Python', 'LLM Orchestration', 'Multi-Agent Systems'],
     github: 'https://github.com/sarac02/llm-avalon-simulator',
     featured: true,
@@ -152,11 +133,7 @@ export const projects: Project[] = [
     name: 'Hybrid LSTM-VAE-GAN Anomaly Detector',
     tagline: 'Learns what "normal" looks like instead of relying on hand-tuned rules',
     description:
-      'A hybrid deep-learning architecture fusing a sequence-aware variational autoencoder with an adversarial discriminator, the research-grade successor to the rule-based anomaly detection I shipped in production at Garg Group.',
-    bullets: [
-      'Combined an LSTM-based VAE encoder-decoder with a GAN discriminator: the VAE reconstructs normal temporal patterns, the discriminator sharpens what counts as a convincing reconstruction, catching anomalies reconstruction error alone would miss.',
-      'Built as a direct upgrade path from the static rule-based detection used in production for supply-chain time-series monitoring.',
-    ],
+      'An LSTM-based VAE fused with a GAN discriminator to learn normal time-series patterns and flag deviations, the research-grade successor to the rule-based anomaly detection I shipped in production at Garg Group.',
     tech: ['PyTorch', 'LSTM', 'VAE', 'GAN'],
     github: 'https://github.com/sarac02/Hybrid-LSTM-VAE-GAN-for-Time-Series-Anomaly-Detection',
     featured: true,
@@ -165,11 +142,7 @@ export const projects: Project[] = [
     name: 'Genome Sequence & Drug-Target Interaction Analysis',
     tagline: 'Peer-reviewed, Springer LNNS Series',
     description:
-      'A computational biology project analyzing SARS-CoV-2 genomic sequences and alignment data that became a peer-reviewed publication on drug-target interaction prediction with deep learning (see Publications).',
-    bullets: [
-      'Applied PCA and k-means clustering to genomic and alignment datasets to surface structure in high-dimensional sequence data no manual inspection would catch.',
-      'Trained linear regression and neural network models to predict alignment bit scores from sequence features, findings that carried through to publication.',
-    ],
+      'Computational biology project analyzing SARS-CoV-2 genomic and alignment data with PCA, clustering, and neural networks, the work behind a peer-reviewed paper on drug-target interaction prediction (see Publications).',
     tech: ['Python', 'scikit-learn', 'PCA', 'Neural Networks'],
     github: 'https://github.com/sarac02/Advanced-AI-for-Drug-discovery',
   },
