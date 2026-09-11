@@ -181,11 +181,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'ML & Data',
-    items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'Hugging Face', 'LLMs', 'Causal ML', 'Spark', 'Airflow'],
-  },
-  {
-    label: 'Tooling',
-    items: ['Jenkins', 'Git', 'Cursor', 'Claude Code'],
+    items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'Hugging Face', 'LLMs', 'Causal ML', 'Spark'],
   },
 ]
 
